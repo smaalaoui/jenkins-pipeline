@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("hotels")
@@ -22,8 +23,15 @@ public class HotelController {
 
     @GetMapping("/{name}")
     public ResponseEntity<Hotel> getHotelDetails(@PathVariable("name") String name) {
-        Hotel hotel = hotels.stream().filter(item -> item.getName().equals(name)).findFirst().orElse(null);
-        return new ResponseEntity<>(hotel, HttpStatus.OK);
+        Optional<Hotel> hotel = hotels.stream().filter(item -> item.getName().equals(name)).findFirst();
+        if (hotel.isEmpty()) {
+            Hotel defaultHotel = new Hotel();
+            defaultHotel.setName("IBIS");
+            defaultHotel.setAddress("Any address");
+            return new ResponseEntity<>(defaultHotel, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(hotel.get(), HttpStatus.OK);
+        }
     }
 
     @PostMapping("/")
