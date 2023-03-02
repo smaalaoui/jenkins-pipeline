@@ -6,7 +6,10 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh "echo Building"
+                sh """
+                    mkdir build
+                    cp src/index.jp build
+                """
             }
         }
 
