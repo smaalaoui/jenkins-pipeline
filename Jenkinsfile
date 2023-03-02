@@ -2,6 +2,8 @@ pipeline {
 
     agent { label 'jenkins-slave' }
 
+    triggers { cron('* * * * *') }
+
     stages {
 
         stage('Clean') {
