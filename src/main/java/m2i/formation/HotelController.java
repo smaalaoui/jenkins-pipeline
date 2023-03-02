@@ -24,13 +24,13 @@ public class HotelController {
     @GetMapping("/{name}")
     public ResponseEntity<Hotel> getHotelDetails(@PathVariable("name") String name) {
         Optional<Hotel> hotel = hotels.stream().filter(item -> item.getName().equals(name)).findFirst();
-        if (hotel.isEmpty()) {
+        if (hotel.isPresent()) {
+            return new ResponseEntity<>(hotel.get(), HttpStatus.OK);
+        } else {
             Hotel defaultHotel = new Hotel();
             defaultHotel.setName("IBIS");
             defaultHotel.setAddress("Any address");
             return new ResponseEntity<>(defaultHotel, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(hotel.get(), HttpStatus.OK);
         }
     }
 
