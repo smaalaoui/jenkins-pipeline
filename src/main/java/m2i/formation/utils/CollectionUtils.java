@@ -7,7 +7,7 @@ import java.util.List;
 public class CollectionUtils {
 
     public static Integer calculateSize(List<Hotel> list) {
-        return list.size() * 3;
+        return list.size() * 2;
     }
 
 }
