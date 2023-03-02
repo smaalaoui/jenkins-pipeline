@@ -10,6 +10,12 @@ pipeline {
             }
         }
 
+        stage('Clone') {
+            steps {
+                checkout scm
+            }
+        }
+
         stage('Build') {
             steps {
                 sh """
