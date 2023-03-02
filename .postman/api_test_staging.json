@@ -98,6 +98,49 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Get unknown Hotel details",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"The response contains default hotel\", () => {",
+							"    //parse the response JSON and test three properties",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.name).to.eql('IBIS');",
+							"    pm.expect(responseJson.address).to.eql('Any address');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://54.154.198.55:8090/hotels/toto",
+					"protocol": "http",
+					"host": [
+						"54",
+						"154",
+						"198",
+						"55"
+					],
+					"port": "8090",
+					"path": [
+						"hotels",
+						"toto"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

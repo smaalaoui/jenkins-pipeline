@@ -54,25 +54,11 @@ pipeline {
             }
         }
 
-        /*stage('Build') {
+        stage('API Test') {
             steps {
-                sh """
-                    mvn clean package
-                """
+                sh "newman run .postman/api_test_staging.json"
             }
         }
-
-        stage('Staging') {
-            steps {
-                sh "echo Staging"
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                sh "echo Deployment"
-            }
-        }*/
 
     }
 
