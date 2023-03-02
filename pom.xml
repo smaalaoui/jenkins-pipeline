@@ -14,7 +14,6 @@
     <name>api</name>
     <description>API</description>
     <properties>
-        <java.version>11</java.version>
         <spring-cloud.version>2021.0.3</spring-cloud.version>
         <project-base-package>com.inovelan.santnet.support</project-base-package>
         <openapi-generator-maven-plugin.version>4.2.3</openapi-generator-maven-plugin.version>
@@ -162,10 +161,19 @@
         <finalName>app</finalName>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.inovelan.santnet.support.Application</mainClass>
+                    <mainClass>m2i.formation.Application</mainClass>
                 </configuration>
             </plugin>
             <plugin>
