@@ -1,8 +1,10 @@
 pipeline {
 
-    agent { label 'jenkins-slave' }
+    agent { label 'master' }
 
-    triggers { cron('* * * * *') }
+    tools {
+        maven "maven-3.6.0"
+    }
 
     stages {
 
@@ -18,11 +20,18 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('TU') {
             steps {
                 sh """
-                    mkdir build
-                    cp src/index.js build
+                    mvn clean test
+                """
+            }
+        }
+
+        /*stage('Build') {
+            steps {
+                sh """
+                    mvn clean package
                 """
             }
         }
@@ -37,7 +46,7 @@ pipeline {
             steps {
                 sh "echo Deployment"
             }
-        }
+        }*/
 
     }
 
@@ -53,7 +62,6 @@ pipeline {
         always {
             sh "echo Job finished"
         }
-
     }
 
 }
