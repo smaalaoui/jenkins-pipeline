@@ -5,6 +5,7 @@ pipeline {
 
     tools {
         maven "maven-3.6.0"
+        nodejs "node-newman"
     }
 
     stages {
