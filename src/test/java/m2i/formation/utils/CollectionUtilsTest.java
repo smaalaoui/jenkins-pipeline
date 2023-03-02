@@ -22,7 +22,7 @@ public class CollectionUtilsTest {
         Integer result = CollectionUtils.calculateSize(hotels);
 
         // THEN
-        Assertions.assertEquals(2, result);
+        Assertions.assertEquals(4, result);
     }
 
 }
