@@ -29,7 +29,7 @@ public class HotelController {
         } else {
             Hotel defaultHotel = new Hotel();
             defaultHotel.setName("IBIS");
-            defaultHotel.setAddress("Any address");
+            defaultHotel.setAddress("Any address#");
             return new ResponseEntity<>(defaultHotel, HttpStatus.OK);
         }
     }
