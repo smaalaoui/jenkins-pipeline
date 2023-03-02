@@ -39,4 +39,19 @@ pipeline {
 
     }
 
+    post {
+        failure {
+            sh "echo failure occurred"
+        }
+
+        success {
+            sh "echo Succeeded"
+        }
+
+        always {
+            sh "echo Job finished"
+        }
+
+    }
+
 }
