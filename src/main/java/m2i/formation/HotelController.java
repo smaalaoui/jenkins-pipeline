@@ -3,10 +3,7 @@ package m2i.formation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +18,12 @@ public class HotelController {
     @GetMapping("/")
     public ResponseEntity<List<Hotel>> getHotels() {
         return new ResponseEntity<>(hotels, HttpStatus.OK);
+    }
+
+    @GetMapping("/{name}")
+    public ResponseEntity<Hotel> getHotelDetails(@PathVariable("name") String name) {
+        Hotel hotel = hotels.stream().filter(item -> item.getName().equals(name)).findFirst().orElse(null);
+        return new ResponseEntity<>(hotel, HttpStatus.OK);
     }
 
     @PostMapping("/")
