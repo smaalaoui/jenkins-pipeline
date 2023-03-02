@@ -20,7 +20,7 @@ pipeline {
             steps {
                 sh """
                     mkdir build
-                    cp src/index.js build
+                    cp src/index.js111 build
                 """
             }
         }
